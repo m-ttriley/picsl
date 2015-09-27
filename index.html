@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>pic // sl</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/paper/dist/paper-full.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script type="text/paperscript" canvas="background">
+	var width = window.innerWidth;
+	// Create a circle shaped path at the center of the view,
+	// with a radius of 70:
+	var path = new Path.Circle({
+	center: [view.center.x, view.center.y - 50],
+	radius: width/8,
+	fillColor: 'red'
+	});
+
+	function onFrame(event) {
+	// Each frame, change the fill color of the path slightly by
+	// adding .25 to its hue:
+		path.fillColor.hue += 0.25;
+	}
+	</script>
+	<style type="text/css">
+	html, body {
+		height: 100%;
+		width: 100%;
+	}
+	canvas, #background {
+		display: block;
+		position: absolute;
+        top: 0;
+		left: 0;
+		right: 0;
+        bottom: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background-color: rgb(240, 240, 240);
+
+	}
+
+	#title {
+		padding-top: 80px;
+	}
+
+	#titletext {
+		font-size: 36px;
+		display: none;
+	}
+
+	#menu {
+		position: relative;
+		top: 775px;
+		height: 50%;
+		width: 10%;
+	}
+
+	#upload-form {
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+	<div id="title">
+	<p id="titletext" class="text-center"> pic // sl </p>
+	</div>
+	<div id="menu" class="center-block">
+		<button id="start" type="button" class="btn btn-default btn-block">start</button>
+	</div>
+
+	<div id="upload-form">
+		<div class="col-sm-8 col-sm-offset-2 text-center">
+                <form action="/api/image" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+
+                        <input type="file" class="form-control input-lg text-center">
+                    </div>
+
+                    <button id="upload" type="submit" class="btn btn-primary btn-lg">upload</button>
+                </form>
+            </div>
+	</div>
+
+	<div id="app">
+		
+	</div>
+	</div>
+<canvas id="background" width="100%", height:"100%"></canvas>
+<script>
+	$(function() {
+		$('#titletext').fadeIn(3000);
+  		$('#start').click(function(){
+  			$('#background').fadeOut(1000);
+  			$(this).fadeOut(1000);
+  			$('#upload-form').fadeIn(1500);
+  		});
+  		/*
+  		$('#upload').click(function() {
+  			$('#upload-form').fadeOut(1000);
+  			$('#app').fadeIn(1000);
+  		});
+*/
+	});
+</script>
+</body>
+</html>
+
