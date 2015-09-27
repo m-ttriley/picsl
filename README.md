@@ -1,5 +1,5 @@
 # picsl
-Currently still in development - algorithm and visualization is visible at:
+Currently still in development - algorithm and visualization is visible at: http://m-ttriley.github.io/picsl/
 
 TODO: 
   -Finish backend
