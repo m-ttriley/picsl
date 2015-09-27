@@ -6,8 +6,8 @@ upload = multer({dest: 'uploads/'}),
 fs = require('fs'),
 S3FS = require('s3fs'),	//abstraction over Amazon S3's SDK
 s3fsImpl = new S3FS('pixelphotos', {
-       accessKeyId: 'AKIAJLI6FMKSEFRDVCSQ',
-       secretAccessKey: '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'
+       accessKeyId: '...',
+       secretAccessKey: '...'
    	});
 
 
