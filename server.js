@@ -3,11 +3,11 @@ var body_parser = require('body-parser')
 var http = require('http');
 var path = require('path');
 var aws = require('aws-sdk');
-var port = process.env.PORT || 8080;
+var port = 8080;
 var app = express();
 app.engine('html', require('ejs').renderFile);
 
-app.use(express.static(__dirname);
+app.use(express.static(__dirname));
 app.use(body_parser.urlencoded())
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
